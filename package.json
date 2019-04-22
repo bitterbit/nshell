@@ -23,7 +23,8 @@
   },
   "repository": "git@github.com:visionmedia/nshell.git",
   "scripts": {
-    "test": "make test"
+    "test": "make test",
+    "build": "webpack bin/shell --target node --mode development"
   },
   "bin": {
     "nshell": "bin/shell"
