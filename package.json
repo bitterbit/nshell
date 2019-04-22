@@ -12,7 +12,6 @@
     "jbnicolai <joshua@jbna.nl>"
   ],
   "dependencies": {
-    "cash": "^0.8.0",
     "commander": "^2.2.0",
     "debug": "^1.0.2",
     "glob": "^4.0.3",
