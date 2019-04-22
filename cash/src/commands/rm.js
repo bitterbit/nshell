@@ -17,13 +17,16 @@ const rm = {
       options.R :
       options.recursive;
 
-    let files = args;
-    files = (files === undefined) ? [] : files;
-    files = (typeof files === 'string') ? [files] : files;
+    let files = args || [];
+    for(var i=0; i<files.length; i++){
+      files[i] = files[i].toString();
+    }
 
+    files = (typeof files === 'string') ? [files] : files;
     files = expand(files);
 
     files.forEach(function (file) {
+      file = file.toString();
       if (!fs.existsSync(file)) {
         // Path does not exist, no force flag given
         if (!options.force) {

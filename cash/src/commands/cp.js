@@ -154,7 +154,7 @@ function copyFileSync(src, dest) {
   }
 
   const BUF_LENGTH = 64 * 1024;
-  const buf = new Buffer(BUF_LENGTH);
+  const buf = Buffer.alloc(BUF_LENGTH);
   let bytesRead = BUF_LENGTH;
   let pos = 0;
   let fdr = null;

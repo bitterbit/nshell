@@ -23,6 +23,9 @@ const touch = {
     files = (!Array.isArray(files)) ? [files] : files;
     options = options || {};
 
+    for(var i=0; i<files.length; i++){
+      files[i] = files[i].toString();
+    }
     // If any version of --no-create is passed, change it to false.
     options.create = (options.create === true) ? false : options.create;
 

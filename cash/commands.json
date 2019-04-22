@@ -19,8 +19,6 @@
     "tail",
     "touch",
     "true",
-    "less",
-    "grep",
     "rm",
     "unalias",
     "which"
@@ -36,8 +34,6 @@
     "unalias"
   ],
   "importedCommands": [
-    "less",
-    "grep"
   ],
   "windowsExclusions": [
     "time"
