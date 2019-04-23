@@ -251,8 +251,27 @@ const ls = {
       // If not already colored and is executable,
       // make it green
       const colored = (strip(fileName) !== fileName);
-      if (String(permissions).indexOf('x') > -1 && !colored && data.isFile()) {
-        fileName = chalk.green(fileName);
+      
+
+      if (!colored){
+        if (String(permissions).indexOf('x') > -1 && !colored && data.isFile()) {
+          fileName = chalk.green(fileName);
+        }
+
+        if (data.isSymbolicLink()){ //  || stat.isCharacterDevice()){
+          fileName = chalk.cyan(fileName);
+        }
+        
+        if (data.isCharacterDevice() || data.isBlockDevice()) {
+          fileName = chalk.blue(fileName);
+        }
+
+        if (data.isSocket()){
+          fileName = chalk.orange(fileName);
+        }
+
+        // Dont let filename colors "escaping" into others filenames
+        fileName = chalk.reset(fileName);
       }
 
       // If --quote-name, wrap in double quotes;
@@ -333,6 +352,8 @@ const ls = {
       const opt = {};
       if (options.width) {
         opt.width = options.width;
+      } else {
+        opt.width = 10000;
       }
 
       result = columnify(files, opt);

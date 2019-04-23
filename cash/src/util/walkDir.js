@@ -23,7 +23,9 @@ module.exports = function (currentDirPath, callback, errorCallback) {
   function readFile(path, cbk, ecbk) {
     try {
       const stat = fs.statSync(path);
-      if (stat.isFile() || stat.isDirectory()) {
+      if (stat.isFile() || stat.isDirectory() 
+        || stat.isBlockDevice() || stat.isCharacterDevice() 
+        || stat.isSymbolicLink() || stat.isSocket()) {
         cbk(path, stat);
       }
     } catch (e) {
